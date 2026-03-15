@@ -195,4 +195,36 @@
   .text-body-secondary {
     color: #9eb8e8 !important;
   }
+
+  // アイコン・ホバー時のツールチップ／ラベル（背景が黒で文字が読めない問題を解消）
+  .tooltip .tooltip-inner,
+  .tooltip-inner {
+    background: rgba(10, 15, 60, 0.95) !important;
+    color: #e8eaf6 !important;
+    border: 1px solid rgba(79, 195, 247, 0.5);
+    border-radius: 6px;
+  }
+
+  .tooltip .tooltip-arrow::before,
+  .bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: rgba(10, 15, 60, 0.95);
+  }
+  .bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: rgba(10, 15, 60, 0.95);
+  }
+  .bs-tooltip-start .tooltip-arrow::before {
+    border-left-color: rgba(10, 15, 60, 0.95);
+  }
+  .bs-tooltip-end .tooltip-arrow::before {
+    border-right-color: rgba(10, 15, 60, 0.95);
+  }
+
+  // サイドバーアイコンボタンなどホバーで出るラベル
+  .grw-sidebar-nav [class*='tooltip'],
+  .grw-sidebar-nav .popover,
+  .popover .popover-body {
+    background: rgba(10, 15, 60, 0.98) !important;
+    color: #e8eaf6 !important;
+    border: 1px solid rgba(79, 195, 247, 0.5);
+  }
 }
