@@ -183,18 +183,14 @@
     border-bottom-color: rgba(79, 195, 247, 0.25);
   }
 
-  // 記事数・件数・バッジなどメタ表示を本文と区別（アクセント色で強調）
-  .badge,
-  .grw-page-list-item-count,
-  .grw-tree-item-count,
-  [class*='count']:not([class*='account']),
-  [class*='Count'] {
+  // 記事数・件数はバッジだけに限定（広いセレクタで背景が変わらないように）
+  .badge {
     color: #e1f5fe !important;
     background: rgba(0, 188, 212, 0.35) !important;
     border: 1px solid rgba(79, 195, 247, 0.5);
   }
 
-  // 補助テキスト・ラベルは少し明るい青系で本文と差をつける
+  // 補助テキスト・ラベルは文字色のみ（背景は触らない）
   .text-muted,
   .text-body-secondary {
     color: #9eb8e8 !important;
