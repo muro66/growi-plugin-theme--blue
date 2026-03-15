@@ -1,0 +1,44 @@
+{
+  "name": "growi-plugin-theme-fm26-blue",
+  "version": "1.0.0",
+  "description": "Football Manager 26 inspired GROWI theme — deep blue base with electric blue accents and glowing borders",
+  "license": "MIT",
+  "keywords": [
+    "growi",
+    "growi-plugin",
+    "theme",
+    "fm26"
+  ],
+  "main": "dist/libs/index.js",
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@growi/core-styles": "^1.0.0",
+    "@growi/pluginkit": "^1.1.0",
+    "bootstrap": "^5.3.3",
+    "sass": "^1.77.0",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.0"
+  },
+  "growiPlugin": {
+    "schemaVersion": "4",
+    "types": ["theme"],
+    "themes": [
+      {
+        "name": "fm26-blue",
+        "manifestKey": "src/styles/style.scss",
+        "schemeType": "both",
+        "lightBg": "#0a0a2e",
+        "darkBg": "#00043E",
+        "lightSidebar": "#0d0d3d",
+        "darkSidebar": "#00043E",
+        "lightIcon": "#4fc3f7",
+        "darkIcon": "#4fc3f7",
+        "createBtn": "#00bcd4"
+      }
+    ]
+  }
+}
