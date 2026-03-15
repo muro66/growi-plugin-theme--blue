@@ -156,12 +156,27 @@
     opacity: 0.9;
   }
 
-  // テーブル
+  // テーブル（文字を明るくして視認性を確保）
   .table {
     --bs-table-bg: rgba(0, 4, 62, 0.5);
+    --bs-table-color: #e8eaf6;
     --bs-table-border-color: rgba(79, 195, 247, 0.3);
     --bs-table-hover-bg: rgba(0, 188, 212, 0.08);
-    color: var(--bs-body-color);
+    --bs-table-hover-color: #e8eaf6;
+    color: #e8eaf6;
+  }
+
+  .table td,
+  .table th,
+  .table thead th {
+    color: #e8eaf6;
+  }
+
+  .table a {
+    color: var(--grw-primary-400, #4dd0e1);
+    &:hover {
+      color: var(--grw-highlight-300, #81d4fa);
+    }
   }
 
   .table > :not(caption) > * > * {
