@@ -36,6 +36,8 @@
   --grw-sidebar-nav-btn-color: var(--grw-highlight-400);
   --grw-sidebar-bg: #{$base-bg};
   --grw-navbar-bg: #{$base-bg};
+  --bs-body-bg: #{$base-bg};
+  --bs-body-color: #{$body-color};
 }
 
 // ダークベース（#00043E をメインに）
@@ -43,6 +45,18 @@
   --bs-body-bg: #00043e;
   --bs-body-color: #e8eaf6;
   --grw-fm26-glow: 0 0 14px rgba(0, 188, 212, 0.4), 0 0 6px rgba(79, 195, 247, 0.4);
+}
+
+// 全体の背景を必ず #00043E に（他テーマ・Bootstrap の上書きを防ぐ）
+:root[data-bs-theme] body,
+:root[data-bs-theme] html,
+:root[data-bs-theme] .layout-root,
+:root[data-bs-theme] .grw-app,
+:root[data-bs-theme] .main,
+:root[data-bs-theme] .content-main,
+:root[data-bs-theme] [class*='layout-root'] {
+  background: #00043e !important;
+  background-color: #00043e !important;
 }
 
 // ========== 縁取り・カード（参考画像のパネル風） ==========
