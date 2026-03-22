@@ -1,5 +1,30 @@
 // Football Manager 26 inspired theme — base #00043E, electric blue accents, glowing borders
 
+// -----------------------------------------------------------------------------
+// FOUC / 初回アクセス対策
+// テーマCSSの読み込みや data-bs-theme 適用前に、GROWI/Bootstrap の既定背景
+// （環境によっては茶系 #26231E 付近に見える）が全面に出る問題を抑える。
+// package.json の lightBg / darkBg と揃えておくこと。
+// -----------------------------------------------------------------------------
+html {
+  min-height: 100%;
+  background-color: #00043e !important;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #00043e !important;
+  color: #e8eaf6;
+}
+
+:root[data-bs-theme='light'],
+:root[data-bs-theme='light'] body {
+  background-color: #0a0a2e !important;
+  color: #e8eaf6;
+}
+
+// -----------------------------------------------------------------------------
+
 :root[data-bs-theme] {
   @import '@growi/core-styles/scss/bootstrap/init-stage-1';
   @import '@growi/core-styles/scss/bootstrap/theming/variables';
