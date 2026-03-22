@@ -1,5 +1,30 @@
 // Football Manager 26 inspired theme — base #00043E, electric blue accents, glowing borders
 
+// -----------------------------------------------------------------------------
+// FOUC / 初回アクセス対策
+// テーマCSSの読み込みや data-bs-theme 適用前に、GROWI/Bootstrap の既定背景
+// （環境によっては茶系 #26231E 付近に見える）が全面に出る問題を抑える。
+// package.json の lightBg / darkBg と揃えておくこと。
+// -----------------------------------------------------------------------------
+html {
+  min-height: 100%;
+  background-color: #00043e !important;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #00043e !important;
+  color: #e8eaf6;
+}
+
+:root[data-bs-theme='light'],
+:root[data-bs-theme='light'] body {
+  background-color: #0a0a2e !important;
+  color: #e8eaf6;
+}
+
+// -----------------------------------------------------------------------------
+
 :root[data-bs-theme] {
   @import '@growi/core-styles/scss/bootstrap/init-stage-1';
   @import '@growi/core-styles/scss/bootstrap/theming/variables';
@@ -156,15 +181,63 @@
     opacity: 0.9;
   }
 
-  // テーブル
+  // テーブル（文字を明るくして視認性を確保）
   .table {
     --bs-table-bg: rgba(0, 4, 62, 0.5);
+    --bs-table-color: #e8eaf6;
     --bs-table-border-color: rgba(79, 195, 247, 0.3);
     --bs-table-hover-bg: rgba(0, 188, 212, 0.08);
-    color: var(--bs-body-color);
+    --bs-table-hover-color: #e8eaf6;
+    color: #e8eaf6;
+  }
+
+  .table td,
+  .table th,
+  .table thead th {
+    color: #e8eaf6;
+  }
+
+  .table a {
+    color: var(--grw-primary-400, #4dd0e1);
+    &:hover {
+      color: var(--grw-highlight-300, #81d4fa);
+    }
   }
 
   .table > :not(caption) > * > * {
     border-bottom-color: rgba(79, 195, 247, 0.25);
   }
+
+  // 記事数・件数はバッジだけに限定（広いセレクタで背景が変わらないように）
+  .badge {
+    color: #e1f5fe !important;
+    background: rgba(0, 188, 212, 0.35) !important;
+    border: 1px solid rgba(79, 195, 247, 0.5);
+  }
+
+  // 補助テキスト・ラベルは文字色のみ（背景は触らない）
+  .text-muted,
+  .text-body-secondary {
+    color: #9eb8e8 !important;
+  }
+}
+
+// ツールチップのみ（div.tooltip の子だけ。body・レイアウトには一切触れない）
+:root[data-bs-theme] div.tooltip .tooltip-inner {
+  background: rgba(10, 15, 60, 0.98) !important;
+  color: #e8eaf6 !important;
+  border: 1px solid rgba(79, 195, 247, 0.5);
+  border-radius: 6px;
+}
+:root[data-bs-theme] div.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: rgba(10, 15, 60, 0.98);
+}
+:root[data-bs-theme] div.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: rgba(10, 15, 60, 0.98);
+}
+:root[data-bs-theme] div.tooltip.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: rgba(10, 15, 60, 0.98);
+}
+:root[data-bs-theme] div.tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: rgba(10, 15, 60, 0.98);
 }

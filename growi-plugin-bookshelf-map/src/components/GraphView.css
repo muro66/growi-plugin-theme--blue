@@ -1,0 +1,78 @@
+.grw-graph-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 200px;
+}
+
+.grw-graph-header {
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+}
+
+.grw-graph-path {
+  font-size: 0.85rem;
+  color: rgba(232, 234, 246, 0.9);
+  word-break: break-all;
+}
+
+.grw-graph-svg {
+  flex: 1;
+  min-height: 240px;
+  display: block;
+}
+
+.grw-graph-edge {
+  stroke: rgba(79, 195, 247, 0.5);
+  stroke-width: 1.5;
+}
+
+.grw-graph-node circle {
+  fill: rgba(0, 188, 212, 0.2);
+  stroke: rgba(79, 195, 247, 0.8);
+  stroke-width: 2;
+  transition: fill 0.15s, stroke 0.15s;
+}
+
+.grw-graph-node:hover circle {
+  fill: rgba(0, 188, 212, 0.35);
+  stroke: rgba(79, 195, 247, 1);
+}
+
+.grw-graph-node-center circle {
+  fill: rgba(0, 188, 212, 0.3);
+  stroke: rgba(79, 195, 247, 1);
+  stroke-width: 2.5;
+}
+
+.grw-graph-label {
+  fill: #e8eaf6;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.grw-graph-hint {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: rgba(232, 234, 246, 0.7);
+  margin-top: 0.5rem;
+}
+
+.grw-graph-loading,
+.grw-graph-error,
+.grw-graph-empty {
+  padding: 1.5rem;
+  text-align: center;
+  color: rgba(232, 234, 246, 0.9);
+}
+
+.grw-graph-error {
+  color: #ef9a9a;
+}
+
+.grw-graph-empty code {
+  background: rgba(79, 195, 247, 0.2);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}

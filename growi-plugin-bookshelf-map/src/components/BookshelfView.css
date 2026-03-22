@@ -1,0 +1,86 @@
+.grw-bookshelf-view {
+  padding: 0.5rem 0;
+}
+
+.grw-bookshelf-header {
+  margin-bottom: 0.75rem;
+}
+
+.grw-bookshelf-path {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  word-break: break-all;
+  display: block;
+}
+
+.grw-bookshelf-loading,
+.grw-bookshelf-error,
+.grw-bookshelf-empty {
+  padding: 1rem;
+  text-align: center;
+  color: inherit;
+}
+
+.grw-bookshelf-error {
+  color: #e57373;
+}
+
+.grw-bookshelf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Glass UI カード + Micro Interaction（未来UI実験） */
+.grw-bookshelf-card {
+  margin: 0;
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.grw-bookshelf-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 195, 247, 0.15);
+  border-color: rgba(79, 195, 247, 0.5);
+}
+
+.grw-bookshelf-card-link {
+  display: block;
+  padding: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.grw-bookshelf-card-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.grw-bookshelf-card-cover {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.grw-bookshelf-card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.grw-bookshelf-card-meta {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}

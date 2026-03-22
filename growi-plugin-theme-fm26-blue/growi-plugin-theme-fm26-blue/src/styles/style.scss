@@ -1,0 +1,170 @@
+// Football Manager 26 inspired theme — base #00043E, electric blue accents, glowing borders
+
+:root[data-bs-theme] {
+  @import '@growi/core-styles/scss/bootstrap/init-stage-1';
+  @import '@growi/core-styles/scss/bootstrap/theming/variables';
+  @import '@growi/core-styles/scss/bootstrap/theming/utils/color-palette';
+
+  // ベース色（濃い青）
+  $base-bg: #00043e;
+  // アクセント：エレクトリックブルー・シアン（縁取り・ボタン・アクティブ）
+  $primary: #00bcd4;
+  $highlight: #4fc3f7;
+  $secondary: #5c6bc0;
+
+  @include generate-color-palette('primary', $primary, #00043e, #e1f5fe, 15%, 20%);
+  @include generate-color-palette('highlight', $highlight, #00043e, #e1f5fe, 18%, 22%);
+
+  $body-color: #e8eaf6;
+  $body-bg: $base-bg;
+  $body-secondary-color: rgba($body-color, 0.8);
+  $body-tertiary-color: rgba($body-color, 0.6);
+  $border-color: rgba(79, 195, 247, 0.4);
+  $link-color: #4dd0e1;
+  $link-hover-color: #81d4fa;
+
+  // 発光縁取り用（参考画像の青い光のボーダー）
+  --grw-fm26-glow: 0 0 12px rgba(0, 188, 212, 0.35), 0 0 4px rgba(0, 188, 212, 0.5);
+  --grw-fm26-border: 1px solid rgba(79, 195, 247, 0.5);
+  --grw-fm26-border-strong: 1px solid rgba(0, 188, 212, 0.8);
+
+  @import 'bootstrap/scss/variables';
+  @import 'bootstrap/scss/variables-dark';
+  @import '@growi/core-styles/scss/bootstrap/init-stage-2';
+  @import '@growi/core-styles/scss/bootstrap/theming/apply-light';
+
+  --grw-sidebar-nav-btn-color: var(--grw-highlight-400);
+  --grw-sidebar-bg: #{$base-bg};
+  --grw-navbar-bg: #{$base-bg};
+}
+
+// ダークベース（#00043E をメインに）
+:root[data-bs-theme='dark'] {
+  --bs-body-bg: #00043e;
+  --bs-body-color: #e8eaf6;
+  --grw-fm26-glow: 0 0 14px rgba(0, 188, 212, 0.4), 0 0 6px rgba(79, 195, 247, 0.4);
+}
+
+// ========== 縁取り・カード（参考画像のパネル風） ==========
+:root[data-bs-theme] {
+  .card,
+  .grw-sidebar-content .list-group-item,
+  .page-list .page-list-ul .page-list-item,
+  .layout-root .main,
+  .content-main,
+  .grw-contextual-sub-nav,
+  .modal-content,
+  .dropdown-menu,
+  .form-control,
+  .input-group-text {
+    border-radius: 8px;
+    border: var(--grw-fm26-border);
+    box-shadow: var(--grw-fm26-glow);
+  }
+
+  .card {
+    background: rgba(0, 4, 62, 0.85);
+    background-color: rgba(10, 15, 60, 0.9);
+  }
+
+  .card-header {
+    border-bottom: var(--grw-fm26-border);
+    background: rgba(0, 188, 212, 0.08);
+    color: var(--grw-highlight-300);
+  }
+
+  // ボタン：発光する縁取り
+  .btn-primary,
+  .btn-outline-primary {
+    border-radius: 9999px;
+    border: var(--grw-fm26-border-strong);
+    box-shadow: var(--grw-fm26-glow);
+  }
+
+  .btn-primary {
+    background: rgba(0, 188, 212, 0.25);
+    color: var(--grw-highlight-200);
+    &:hover {
+      background: rgba(0, 188, 212, 0.4);
+      box-shadow: 0 0 16px rgba(0, 188, 212, 0.5), 0 0 6px rgba(79, 195, 247, 0.5);
+    }
+  }
+
+  .btn-outline-primary {
+    color: var(--grw-primary-400);
+    background: transparent;
+    &:hover {
+      background: rgba(0, 188, 212, 0.15);
+      border-color: rgba(79, 195, 247, 0.9);
+      box-shadow: var(--grw-fm26-glow);
+    }
+  }
+
+  // サイドバー
+  .grw-sidebar,
+  .grw-sidebar-nav {
+    background: var(--grw-sidebar-bg) !important;
+    border-right: var(--grw-fm26-border);
+    box-shadow: 2px 0 16px rgba(0, 188, 212, 0.12);
+  }
+
+  .grw-sidebar-content .list-group-item {
+    background: rgba(0, 4, 62, 0.6);
+    color: var(--grw-highlight-200);
+    &:hover,
+    &.active {
+      background: rgba(0, 188, 212, 0.12);
+      border-color: rgba(79, 195, 247, 0.6);
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.25);
+    }
+  }
+
+  // ナビゲーション・タブ
+  .nav-tabs .nav-link {
+    border-radius: 8px 8px 0 0;
+    border: var(--grw-fm26-border);
+    color: var(--grw-highlight-300);
+    &.active {
+      background: rgba(0, 188, 212, 0.15);
+      border-bottom-color: transparent;
+      box-shadow: 0 -2px 10px rgba(0, 188, 212, 0.2);
+    }
+  }
+
+  // 入力フィールド（参考画像の検索ボックス風）
+  .form-control,
+  .form-select {
+    background: rgba(0, 4, 62, 0.8);
+    color: var(--bs-body-color);
+    border: var(--grw-fm26-border);
+    border-radius: 8px;
+    &:focus {
+      border-color: rgba(79, 195, 247, 0.8);
+      box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2), var(--grw-fm26-glow);
+    }
+  }
+
+  // メインコンテンツエリア
+  .main,
+  .content-main {
+    background: #00043e;
+  }
+
+  // 区切り線（薄い青）
+  hr {
+    border-color: rgba(79, 195, 247, 0.25);
+    opacity: 0.9;
+  }
+
+  // テーブル
+  .table {
+    --bs-table-bg: rgba(0, 4, 62, 0.5);
+    --bs-table-border-color: rgba(79, 195, 247, 0.3);
+    --bs-table-hover-bg: rgba(0, 188, 212, 0.08);
+    color: var(--bs-body-color);
+  }
+
+  .table > :not(caption) > * > * {
+    border-bottom-color: rgba(79, 195, 247, 0.25);
+  }
+}

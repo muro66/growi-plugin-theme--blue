@@ -1,17 +1,12 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
   build: {
-    sourcemap: false,
+    manifest: true,
     rollupOptions: {
-      input: {
-        client: 'client-entry.tsx',
-      },
-      output: {
-        manualChunks: undefined,
-      },
+      input: ['client-entry.tsx'],
     },
   },
 });

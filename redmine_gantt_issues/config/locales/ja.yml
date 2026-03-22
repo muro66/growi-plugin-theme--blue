@@ -1,0 +1,4 @@
+ja:
+  label_gantt_chart: ガントチャート
+  label_gantt_issues: チケットガント
+  text_no_issues_with_dates: "開始日・期日が両方設定されているチケットがありません。"

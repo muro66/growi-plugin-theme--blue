@@ -1,0 +1,4 @@
+en:
+  label_gantt_chart: Gantt chart
+  label_gantt_issues: Issue Gantt
+  text_no_issues_with_dates: "No issues with both start date and due date set."

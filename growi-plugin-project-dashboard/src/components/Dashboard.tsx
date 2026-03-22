@@ -112,7 +112,7 @@ export const Dashboard: React.FC<Props> = ({ title, tasks }) => {
         <ul className="grw-project-dashboard-task-list">
           {tasks.map((t) => (
             <li key={t.path} className="grw-project-dashboard-task">
-              <a href={t.path} className="grw-project-dashboard-task-title">
+              <a href={t.href} className="grw-project-dashboard-task-title">
                 {t.title}
               </a>
               <div className="grw-project-dashboard-task-meta">

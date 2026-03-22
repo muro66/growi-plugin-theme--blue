@@ -1,0 +1,61 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.min.css', plugin: 'redmine_gantt_issues' %>
+  <style>
+    .gantt-issues-container { margin: 1em 0; }
+    .gantt-issues-container svg { width: 100%; }
+    .gantt-empty { padding: 2em; text-align: center; color: #888; }
+  </style>
+<% end %>
+
+<h2><%= l(:label_gantt_chart) %></h2>
+
+<div class="gantt-issues-container">
+  <div id="gantt-target"></div>
+  <p id="gantt-empty" class="gantt-empty" style="display:none;">
+    <%= l(:text_no_issues_with_dates) %> <%= link_to l(:label_issue_new), new_project_issue_path(@project) %>
+  </p>
+</div>
+
+<%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.umd.min.js', plugin: 'redmine_gantt_issues' %>
+<script>
+(function() {
+  var dataUrl = '<%= j project_gantt_issues_data_path(@project) %>';
+  var issuePathBase = '<%= j url_for(controller: 'issues', action: 'show', project_id: @project.id, id: 0) %>'.replace(/\/0$/, '');
+  var target = document.getElementById('gantt-target');
+  var emptyEl = document.getElementById('gantt-empty');
+
+  fetch(dataUrl, {
+    headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+    credentials: 'same-origin'
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(tasks) {
+    if (!tasks || tasks.length === 0) {
+      target.style.display = 'none';
+      emptyEl.style.display = 'block';
+      return;
+    }
+    emptyEl.style.display = 'none';
+    try {
+      var GanttClass = typeof Gantt !== 'undefined' ? Gantt : (typeof frappe !== 'undefined' && frappe.Gantt ? frappe.Gantt : null);
+      if (!GanttClass) { target.innerHTML = '<p class="gantt-empty">ガントライブラリを読み込めませんでした。</p>'; return; }
+      var gantt = new GanttClass('#gantt-target', tasks, {
+        view_mode: 'Day',
+        bar_height: 24,
+        bar_corner_radius: 3,
+        arrow_curve: 5,
+        date_format: 'YYYY-MM-DD',
+        language: 'ja',
+        on_click: function(task) {
+          window.location.href = issuePathBase + '/' + task.id;
+        }
+      });
+    } catch (e) {
+      target.innerHTML = '<p class="gantt-empty">ガントの描画に失敗しました: ' + e.message + '</p>';
+    }
+  })
+  .catch(function(err) {
+    target.innerHTML = '<p class="gantt-empty">データの取得に失敗しました。</p>';
+  });
+})();
+</script>

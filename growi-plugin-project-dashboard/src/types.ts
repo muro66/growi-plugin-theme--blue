@@ -8,7 +8,10 @@ export interface TicketMeta {
 }
 
 export interface DashboardTask {
+  /** 一意キー・元のリンク先（ID またはパス） */
   path: string;
+  /** 表示用リンク先。API から取得したパス（例: /project/sample/tasks/auth-api）があればそれを使う */
+  href: string;
   title: string;
   meta: TicketMeta;
 }
